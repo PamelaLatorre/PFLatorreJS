@@ -1,0 +1,51 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.body {
+    background-color: #fbc4b4;
+    background-image: linear-gradient(0deg, #fbc3b3 0%, #fbc4b4, #f5f5f5, #ffffff 100%);
+    font-family: Quicksand;
+}
+
+.logo {
+    display: block;
+    margin: auto;
+    padding: 15px;
+    padding-top: 45px;
+}
+
+.h1, h2{
+    text-align: center;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+h1{
+    color: #fbc3b3;
+}
+
+h2{
+    color: #737375;
+}
+
+.parrafointro1 {
+    text-align: center;
+    line-height: 30px;
+    color:  #737375;
+}
+
+.parrafointro{
+    margin-top: 30px;
+    text-align: center;
+    line-height: 30px;
+    color:  #737375;
+}
+
+.mimama {
+    display: block;
+    margin: auto;
+    margin-top: 45px;
+    margin-bottom: 45px;
+}
