@@ -18,7 +18,7 @@
 //     console.table(filtrarPorNombre(nombreUsuario, cuadros));
 
 //     console.log("Espejos:");
-//     console.table(filtrarPorNombre(nombreUsuario, espejos));
+//     console.table(filtrarPorNombre(nombreUsuario, espejos));  
 
 //     console.log("Tapices:");
 //     console.table(filtrarPorNombre(nombreUsuario, tapices));
@@ -33,7 +33,8 @@
 // console.log("¡Gracias por tu visita!");
 
 //incorporamos cards de Bootstrap
-const carro = [];
+// const carro = [];
+let carro = JSON.parse(localStorage.getItem('carro')) || [];
 
 let tablaBody = document.getElementById("tablaBody");
 let botones = document.getElementsByClassName("compra");
@@ -133,7 +134,19 @@ renderizarProductos(cuadros, espejos, tapices, almohadones);
     function agregarACarrito(producto){
     carro.push(producto);
     console.table(carro);
-    alert("Agregaste "+producto.nombre+" al carrito")
+    // alert("Agregaste "+producto.nombre+" al carrito")
+    
+    //con sweetAlert2
+    Swal.fire({
+        title: 'Fantástico!',
+        text: `Agregaste ${producto.nombre} al carrito`,
+        imageUrl: producto.foto,
+        imageWidth: 150,
+        imageHeight: 150,
+        imageAlt: producto.nombre,
+    })
+    
+    //agregar fila a la tabla de carrito
     tablaBody.innerHTML +=`
         <tr>
             <td>${producto.id}</td>
@@ -141,4 +154,38 @@ renderizarProductos(cuadros, espejos, tapices, almohadones);
             <td>${producto.precio}</td>
         </tr>
     `;
-    }
+    
+    //incrementar el total
+    let totalCarrito = carro.reduce((acumulador, producto) => acumulador + producto.precio, 0);
+    document.getElementById('total').innerText = 'Total a pagar $: ' + totalCarrito;
+    
+    //localStorage
+    localStorage.setItem('carro', JSON.stringify(carro));
+}
+
+//finalizar compra
+let finalizarBtn = document.getElementById('finalizar');
+
+finalizarBtn.onclick = () => {
+    Toastify({
+        text: "Gracias por tu compra! Ya empezamos a preparar tu envio",
+        duration: 3000,
+        gravity: 'top',
+        position: 'right',
+        close: true,
+        style: {
+            background: "#737375",
+        },
+        offset: {
+            x: 150, // horizontal axis - can be a number or a string indicating unity. eg: '2em'
+            y: 110 // vertical axis - can be a number or a string indicating unity. eg: '2em'
+        },
+    }).showToast();
+    
+    //vaciar el carro y la tabla
+    carro = [];
+    document.getElementById('tablaBody').innerHTML = ''
+    document.getElementById('total').innerText = 'Total a pagar $: ';
+    localStorage.removeItem('carro');
+}
+
