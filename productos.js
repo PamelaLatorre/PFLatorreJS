@@ -1,4 +1,4 @@
-const productos =[{
+const cuadros =[{
     id: 1,
     foto: "../assets/img/cuadro-abc.jpeg",
     nombre: "Cuadro infantil",
@@ -27,45 +27,48 @@ const productos =[{
     foto: "../assets/img/cuadro-estampado.jpeg",
     nombre: "Cuadro estampado",
     precio: 2500
-},
-{
-    id: 6,
+}]
+
+const espejos =[{
+    id: 1,
     foto: "../assets/img/espejo1.jpeg",
     nombre: "Espejo",
     precio: 3100
 },
 {
-    id: 7,
+    id: 2,
     foto: "../assets/img/espejo2.jpeg",
     nombre: "Espejo infantil",
     precio: 3400
-},
-{
-    id: 8,
+}]
+
+const tapices =[{
+    id: 1,
     foto: "../assets/img/tapiz3.jpeg",
     nombre: "Tapiz letra",
     precio: 1900
 },
 {
-    id: 9,
+    id: 2,
     foto: "../assets/img/tapiz1.jpeg",
     nombre: "Tapiz animal",
     precio: 2100
-},
-{
-    id: 10,
+}]
+
+const almohadones =[{
+    id: 1,
     foto: "../assets/img/almo1.jpeg",
     nombre: "Almohadon estampado grande",
     precio: 3300
 },
 {
-    id: 11,
+    id: 2,
     foto: "../assets/img/almo5.jpeg",
     nombre: "Almohadon grande",
     precio: 2900
 },
 {
-    id: 12,
+    id: 3,
     foto: "../assets/img/almo8.jpeg",
     nombre: "Almohadon estampado chico",
     precio: 2800
