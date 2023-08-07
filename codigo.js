@@ -1,39 +1,61 @@
-// //segundo desafio
-// console.table(cuadros, espejos, tapices, almohadones);
-
-// //función para filtrar los productos por nombre
-// function filtrarPorNombre(nombreBuscado, cuadros, espejos, tapices, almohadones){
-//     const filtrados = productos.filter((producto) => producto.nombre.toLowerCase().includes(nombreBuscado.toLowerCase()));
-//     // console.log(filtrados);
+//función para filtrar los productos por nombre
+// function filtrarPorNombre(nombreBuscado){
+//     const filtrados = producto.filter((producto) => producto.nombre.toLowerCase().includes(nombreBuscado.toLowerCase()));
 //     return filtrados;
 // }
 
-// //datos de entrada por parte del usuario
-// let nombreUsuario = prompt("Ingresa el nombre del producto que estas buscando (0-salir)");
-
-// while (nombreUsuario != 0){
+function filtrarPorNombre(nombreBuscado, categoria) {
+    let productos;
     
-//     //filtrar y mostrar los productos de cada array
-//     console.log("Cuadros:");
-//     console.table(filtrarPorNombre(nombreUsuario, cuadros));
+    switch (categoria) {
+        case 'cuadros':
+            productos = cuadros;
+            break;
+        case 'almohadones':
+            productos = almohadones;
+            break;
+        case 'espejos':
+            productos = espejos;
+            break;
+        case 'tapices':
+            productos = tapices;
+            break;
+        default:
+            throw new Error('Categoría no válida');
+    }
+    
+    const filtrados = productos.filter((producto) => producto.nombre.toLowerCase().includes(nombreBuscado.toLowerCase()));
+    return filtrados;
+}
 
-//     console.log("Espejos:");
-//     console.table(filtrarPorNombre(nombreUsuario, espejos));  
+const nombreProductoInput = document.getElementById('nombreProducto');
+const buscarBtn = document.getElementById('busquedaButton');
+const salirBtn = document.getElementById('salida');
+const resultadoDiv = document.getElementById('resultado');
 
-//     console.log("Tapices:");
-//     console.table(filtrarPorNombre(nombreUsuario, tapices));
+buscarBtn.addEventListener('click', () => {
+    const nombreBuscado = nombreProductoInput.value;
+    if (filtrarPorNombre() !== '') {
+        const prodsFiltrados = filtrarPorNombre(nombreBuscado);
+        if (prodsFiltrados.length === 0) {
+            resultadoDiv.innerHTML = "No se encontraron productos con ese nombre ❌";
+        } else {
+            let tableHtml = '<table><tr><th>Nombre</th><th>Precio</th></tr>';
+            prodsFiltrados.forEach((producto) => {
+                tableHtml += `<tr><td>${producto.nombre}</td><td>${producto.precio}</td></tr>`;
+            });
+            tableHtml += '</table>';
+            resultadoDiv.innerHTML = tableHtml;
+        }
+    }
+});
 
-//     console.log("Almohadones:");
-//     console.table(filtrarPorNombre(nombreUsuario, almohadones));
-
-//     //pedimos nombre de producto nuevamente
-//     nombreUsuario = prompt("Ingresa el nombre del producto que estás buscando (0 para salir)");
-// }
-
-// console.log("¡Gracias por tu visita!");
+salirBtn.addEventListener('click', () => {
+    resultadoDiv.innerHTML = '';
+    nombreProductoInput.value = '';
+});
 
 //incorporamos cards de Bootstrap
-// const carro = [];
 let carro = JSON.parse(localStorage.getItem('carro')) || [];
 
 let tablaBody = document.getElementById("tablaBody");
@@ -152,6 +174,7 @@ renderizarProductos(cuadros, espejos, tapices, almohadones);
             <td>${producto.id}</td>
             <td>${producto.nombre}</td>
             <td>${producto.precio}</td>
+            <td><button class='btn btn-light'>🗑️</button></td>
         </tr>
     `;
     
@@ -177,8 +200,8 @@ finalizarBtn.onclick = () => {
             background: "#737375",
         },
         offset: {
-            x: 150, // horizontal axis - can be a number or a string indicating unity. eg: '2em'
-            y: 110 // vertical axis - can be a number or a string indicating unity. eg: '2em'
+            x: 150,
+            y: 110, 
         },
     }).showToast();
     
@@ -188,4 +211,3 @@ finalizarBtn.onclick = () => {
     document.getElementById('total').innerText = 'Total a pagar $: ';
     localStorage.removeItem('carro');
 }
-

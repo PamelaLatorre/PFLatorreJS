@@ -38,11 +38,13 @@
     <img class="logo" src="../assets/img/logo-png.png"logo" height="130" width="150">
 
     <section>
-        <p class="busqueda">¿Qué producto estás buscando?</p>
         <div class="busqueda1">
-            <input type="button" value="Escribe tu producto">
-            <button type="button" class="btn btn-outline-secondary">Buscar</button>
+            <label for="nombreProducto">Ingresa el nombre del producto que estás buscando:</label>
+            <input type="text" id="nombreProducto">
+            <button type="button" id="busquedaButton" class="btn btn-outline-secondary">Buscar</button>
+            <button type="button" id="salida" class="btn btn-outline-secondary">Salir</button>
         </div>
+        <div id="resultado"></div>
     </section>
     
     <section>
