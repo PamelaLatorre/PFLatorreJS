@@ -9,6 +9,12 @@
     font-family: Quicksand;
 }
 
+.navbar-nav{
+    display: flex;
+    margin: auto;
+    margin-left: 380px;
+}
+
 .logo {
     display: block;
     margin: auto;
@@ -63,4 +69,14 @@ h2{
 
 .btn btn-outline-secondary{
     margin: 25px;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cards{
+    margin: 10px;
 }

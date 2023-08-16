@@ -68,7 +68,7 @@ let contenedorCuadro = document.getElementById("listaCuadros");
 
     for (const producto of cuadros){
         contenedorCuadro.innerHTML += `
-        <div class="card col-sm-2">
+        <div class="card col-sm-2 cards">
             <img src= "${producto.foto}">
             <div class="card-body">
                 <h5 class="card-title">${producto.nombre}</h5>
@@ -83,7 +83,7 @@ let contenedorEspejo = document.getElementById("listaEspejos");
 
     for (const producto of espejos){
         contenedorEspejo.innerHTML += `
-        <div class="card col-sm-2">
+        <div class="card col-sm-2 cards">
             <img src= "${producto.foto}">
             <div class="card-body">
                 <h5 class="card-title">${producto.nombre}</h5>
@@ -98,7 +98,7 @@ let contenedorTapiz = document.getElementById("listaTapices");
 
     for (const producto of tapices){
         contenedorTapiz.innerHTML += `
-        <div class="card col-sm-2">
+        <div class="card col-sm-2 cards">
             <img src= "${producto.foto}">
             <div class="card-body">
                 <h5 class="card-title">${producto.nombre}</h5>
@@ -113,7 +113,7 @@ let contenedorAlmoha = document.getElementById("listaAlmoha");
 
     for (const producto of almohadones){
         contenedorAlmoha.innerHTML += `
-        <div class="card col-sm-2">
+        <div class="card col-sm-2 cards">
             <img src= "${producto.foto}">
             <div class="card-body">
                 <h5 class="card-title">${producto.nombre}</h5>
