@@ -153,7 +153,7 @@ for (const boton of botones) {
 renderizarProductos(cuadros, espejos, tapices, almohadones);
 
 //push al carrito de todas las listas
-    function agregarACarrito(producto){
+function agregarACarrito(producto){
     carro.push(producto);
     console.table(carro);
     // alert("Agregaste "+producto.nombre+" al carrito")
@@ -163,8 +163,8 @@ renderizarProductos(cuadros, espejos, tapices, almohadones);
         title: 'Fantástico!',
         text: `Agregaste ${producto.nombre} al carrito`,
         imageUrl: producto.foto,
-        imageWidth: 150,
-        imageHeight: 150,
+        imageWidth: 130,
+        imageHeight: 130,
         imageAlt: producto.nombre,
     })
     
@@ -174,16 +174,56 @@ renderizarProductos(cuadros, espejos, tapices, almohadones);
             <td>${producto.id}</td>
             <td>${producto.nombre}</td>
             <td>${producto.precio}</td>
-            <td><button class='btn btn-light'>🗑️</button></td>
+            <td><button class='btn btn-light eliminar-producto' data-index='${carro.length - 1}'>🗑️</button></td>
         </tr>
-    `;
+`;
     
-    //incrementar el total
+//incrementar el total
+let totalCarrito = carro.reduce((acumulador, producto) => acumulador + producto.precio, 0);
+document.getElementById('total').innerText = 'Total a pagar $: ' + totalCarrito;
+    
+//localStorage
+localStorage.setItem('carro', JSON.stringify(carro));
+}
+
+//función para actualizar el total del carrito
+function actualizarTotalCarrito() {
     let totalCarrito = carro.reduce((acumulador, producto) => acumulador + producto.precio, 0);
     document.getElementById('total').innerText = 'Total a pagar $: ' + totalCarrito;
-    
-    //localStorage
-    localStorage.setItem('carro', JSON.stringify(carro));
+}
+
+//ponemos en funcionamiento el boton de eliminar
+tablaBody.addEventListener('click', (event) => {
+    if (event.target.classList.contains('eliminar-producto')) {
+        const button = event.target;
+        const index = parseInt(button.getAttribute('data-index'), 10);
+
+        if (!isNaN(index) && index >= 0 && index < carro.length) {
+            carro.splice(index, 1); //eliminamos el producto de la tabla
+            actualizarTablaCarrito(); //actualiza la tabla de carrito
+            actualizarTotalCarrito(); //actualiza el total del carrito 
+            localStorage.setItem('carro', JSON.stringify(carro)); //actualiza el local storage
+        }
+    }
+});
+
+//función para actualizar la tabla de carrito
+function actualizarTablaCarrito() {
+    let tablaHTML = '';
+
+    for (const producto of carro) {
+        tablaHTML += `
+            <tr>
+                <td>${producto.id}</td>
+                <td>${producto.nombre}</td>
+                <td>${producto.precio}</td>
+                <td><button class='btn btn-light eliminar-producto' data-index='${carro.indexOf(producto)}'>🗑️</button></td>
+            </tr>
+        `;
+    }
+
+    tablaBody.innerHTML = tablaHTML;
+
 }
 
 //finalizar compra
@@ -205,9 +245,16 @@ finalizarBtn.onclick = () => {
         },
     }).showToast();
     
-    //vaciar el carro y la tabla
-    carro = [];
-    document.getElementById('tablaBody').innerHTML = ''
-    document.getElementById('total').innerText = 'Total a pagar $: ';
-    localStorage.removeItem('carro');
+//incrementar el total
+let totalCarrito = carro.reduce((acumulador, producto) => acumulador + producto.precio, 0);
+document.getElementById('total').innerText = 'Total a pagar $: ' + totalCarrito;
+
+//localStorage
+localStorage.setItem('carro', JSON.stringify(carro));
+
+//vaciar el carro y la tabla
+carro = [];
+document.getElementById('tablaBody').innerHTML = ''
+document.getElementById('total').innerText = 'Total a pagar $: ';
+localStorage.removeItem('carro');
 }
