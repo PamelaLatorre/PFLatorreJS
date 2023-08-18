@@ -342,30 +342,32 @@ salidaBtn.addEventListener('click', () => {
 
 });
 
-// //json local
-// let inspirateMiMusa = document.getElementById("inspirate-mi-musa");
-// function obtenerJsonPropio(){
-//     const URLJSON = "/user.json";
-//     fetch(URLJSON)
-//     .then(resp => resp.json())
-//     .then(data => {console.log(data.inspirateConMiMusa);
-//     });
+//json local
+let inspirateMiMusa = document.getElementById("inspirate-mi-musa");
 
-//     //cargamos las cards de las imagenes solicitadas
-//     for(const prod of inspirateMiMusa){
-//         inspirateMiMusa.innerhtml+=`
-//             <tr>
-//                 <td>$prod.nombre</td>
-//                 <td>$prod.categoria</td>
-//                 <td>$prod.descripcion</td>
-//                 <td>$prod.imagen</td>
-//             </tr>
-//         `;
-//     };
+function obtenerJsonPropio(){
+    const URLJSON = "/users.json";
+    fetch(URLJSON)
+    .then(resp => resp.json())
+    .then(data => {
+        console.log(data.inspirateConMiMusa);
+        const listaInspi = data.inspirateConMiMusa;
+        console.log(listaInspi);
+    
+        //cargamos las cards de las imagenes solicitadas
+        for(const prod of listaInspi){
+            inspirateMiMusa.innerHTML +=`
+                <div class="card col-sm-2 cards">
+                    <img src= "${prod.imagen}">
+                    <div class="card-body">
+                        <h5 class="card-title">${prod.nombre}</h5>
+                        <h6 class="card-title">${prod.categoria}</h6>
+                        <p class="card-text">Detalle: ${prod.descripcion}</p>
+                    </div>
+                </div>
+            `;
+        }
+    })
+}
 
-//     //inyeccion al DOM
-
-
-// }
-
-// obtenerJsonPropio();
+obtenerJsonPropio();

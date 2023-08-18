@@ -8,32 +8,32 @@
         {
         "nombre": "Cuadros MiMusa en tu cocina",
         "categoria": "Cuadros",
-        "descripcion": "../assets/img/cuadro-cocina.jpeg",
-        "imagen": "Renová tu cocina con el cuadro ideal para ella."
+        "descripcion": "Renová tu cocina con el cuadro ideal para ella.",
+        "imagen": "../assets/img/cuadro-cocina.jpeg"
         },
         {
         "nombre": "Espejos MiMusa",
         "categoria": "Espejos",
-        "descripcion": "../assets/img/espejo-recibidor.jpeg",
-        "imagen": "Dale calidez a tu recibidor, con estos hermosos espejos."
+        "descripcion": "Dale calidez a tu recibidor, con estos hermosos espejos.",
+        "imagen": "../assets/img/espejo-recibidor.jpeg"
         },
         {
         "nombre": "Tapiz MiMusa en el cuarto",
         "categoria": "Tapices",
-        "descripcion": "../assets/img/tapiz-cuarto.jpeg",
-        "imagen": "El tapiz osito le dará mucha calidez al cuarto de tus niños."
+        "descripcion": "El tapiz osito le dará mucha calidez al cuarto de tus niños.",
+        "imagen": "../assets/img/tapiz-cuarto.jpeg"
         },
         {
         "nombre": "Almohadones MiMusa en tu recibidor",
         "categoria": "Almohadones",
-        "descripcion": "../assets/img/almohadon-recibidor.jpeg",
-        "imagen": "El confort de los almohadones en la entrada de tu casa."
+        "descripcion": "El confort de los almohadones en la entrada de tu casa.",
+        "imagen": "../assets/img/almohadon-recibidor.jpeg"
         },
         {
         "nombre": "Almohadones MiMusa en tu jardin",
         "categoria": "Almohadones",
-        "descripcion": "../assets/img/almohadon-jardin.jpeg",
-        "imagen": "Ideales para disfrutar tus tardes en el jardín."
+        "descripcion": "Ideales para disfrutar tus tardes en el jardín.",
+        "imagen": "../assets/img/almohadon-jardin.jpeg"
         }
     ]
 }
