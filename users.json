@@ -1,0 +1,39 @@
+{
+    "inspirateConMiMusa": [{
+        "nombre": "Cuadros MiMusa en tu living",
+        "categoria": "Cuadros",
+        "descripcion": "Un cuadro que añadirá el toque perfecto a tu hogar.",
+        "imagen": "../assets/img/cuadro-living.jpeg"
+        },
+        {
+        "nombre": "Cuadros MiMusa en tu cocina",
+        "categoria": "Cuadros",
+        "descripcion": "../assets/img/cuadro-cocina.jpeg",
+        "imagen": "Renová tu cocina con el cuadro ideal para ella."
+        },
+        {
+        "nombre": "Espejos MiMusa",
+        "categoria": "Espejos",
+        "descripcion": "../assets/img/espejo-recibidor.jpeg",
+        "imagen": "Dale calidez a tu recibidor, con estos hermosos espejos."
+        },
+        {
+        "nombre": "Tapiz MiMusa en el cuarto",
+        "categoria": "Tapices",
+        "descripcion": "../assets/img/tapiz-cuarto.jpeg",
+        "imagen": "El tapiz osito le dará mucha calidez al cuarto de tus niños."
+        },
+        {
+        "nombre": "Almohadones MiMusa en tu recibidor",
+        "categoria": "Almohadones",
+        "descripcion": "../assets/img/almohadon-recibidor.jpeg",
+        "imagen": "El confort de los almohadones en la entrada de tu casa."
+        },
+        {
+        "nombre": "Almohadones MiMusa en tu jardin",
+        "categoria": "Almohadones",
+        "descripcion": "../assets/img/almohadon-jardin.jpeg",
+        "imagen": "Ideales para disfrutar tus tardes en el jardín."
+        }
+    ]
+}

@@ -40,10 +40,17 @@
 
     <section>
         <div class="busqueda1">
-            <label for="nombreProducto">Ingresa el nombre del producto que estás buscando:</label>
-            <input type="text" id="nombreProducto">
-            <button type="button" id="busquedaButton" class="btn btn-outline-secondary">Buscar</button>
-            <button type="button" id="salida" class="btn btn-outline-secondary">Salir</button>
+            <label for="categoria">Ingresa el nombre del producto que estás buscando:</label>
+            <select id="categoria" name="categoria">
+                <option value="cuadros">Cuadros</option>
+                <option value="almohadones">Almohadones</option>
+                <option value="espejos">Espejos</option>
+                <option value="tapices">Tapices</option>
+            </select>
+        </div>
+        <div class="busqueda2">
+            <button type="button" id=busquedaButton class="btn btn-outline-secondary busquedaButton">Buscar</button>
+            <button type="button" id=salida class="btn btn-outline-secondary salida">Limpiar</button>
         </div>
         <div id="resultado"></div>
     </section>

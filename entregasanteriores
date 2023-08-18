@@ -92,3 +92,57 @@ while (nombreUsuario != 0){
     //se vuelve a preguntar
     nombreUsuario = prompt("Ingresa el nombre del producto que estas buscando (0-salir)");
 }
+
+
+function renderizarProductos(productos) {
+    let tableHtml = '<table><tr><th>Nombre</th><th>Precio</th></tr>';
+    productos.forEach((producto) => {
+        tableHtml += `<tr><td>${producto.nombre}</td><td>${producto.precio}</td></tr>`;
+    });
+    tableHtml += '</table>';
+    resultadoDiv.innerHTML = tableHtml;
+}
+
+const categoriaSelect = document.getElementById('categoria');
+// const nombreProductoInput = document.getElementById('nombreProducto');
+const buscarBtn = document.getElementById('busquedaButton');
+const resultadoDiv = document.getElementById('resultado');
+
+buscarBtn.addEventListener('click', () => {
+    const categoriaSeleccionada = categoriaSelect.value;
+    // const nombreBuscado = nombreProductoInput.value;
+
+function filtrarPorNombre(nombreBuscado, categoria) {
+    let productos;
+                
+    switch (categoria) {
+        case 'cuadros':
+            productos = cuadros;
+            break;
+        case 'almohadones':
+            productos = almohadones;
+            break;
+        case 'espejos':
+            productos = espejos;
+            break;
+        case 'tapices':
+            productos = tapices;
+            break;
+        default:
+            throw new Error('No encontramos tu producto ❌');
+    }
+                
+const filtrados = productos.filter((producto) => producto.nombre.toLowerCase().includes(nombreBuscado.toLowerCase()));
+return filtrados;
+}
+            
+    try {
+        const prodsFiltrados = filtrarPorNombre(nombreBuscado, categoriaSeleccionada); // Pasa la categoría seleccionada como argumento
+        if (prodsFiltrados.length === 0) {
+            resultadoDiv.innerHTML = "No se encontraron productos con ese nombre ❌";
+        } else {
+            renderizarProductos(prodsFiltrados);
+        }
+    } catch (error) {
+        resultadoDiv.innerHTML = error.message; // Muestra el mensaje de error proporcionado en el objeto Error
+    }});

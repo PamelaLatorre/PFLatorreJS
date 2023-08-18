@@ -1,59 +1,7 @@
-//función para filtrar los productos por nombre
-// function filtrarPorNombre(nombreBuscado){
-//     const filtrados = producto.filter((producto) => producto.nombre.toLowerCase().includes(nombreBuscado.toLowerCase()));
-//     return filtrados;
-// }
-
-function filtrarPorNombre(nombreBuscado, categoria) {
-    let productos;
-    
-    switch (categoria) {
-        case 'cuadros':
-            productos = cuadros;
-            break;
-        case 'almohadones':
-            productos = almohadones;
-            break;
-        case 'espejos':
-            productos = espejos;
-            break;
-        case 'tapices':
-            productos = tapices;
-            break;
-        default:
-            throw new Error('Categoría no válida');
-    }
-    
-    const filtrados = productos.filter((producto) => producto.nombre.toLowerCase().includes(nombreBuscado.toLowerCase()));
-    return filtrados;
-}
-
-const nombreProductoInput = document.getElementById('nombreProducto');
+const categoriaSelect = document.getElementById('categoria');
 const buscarBtn = document.getElementById('busquedaButton');
-const salirBtn = document.getElementById('salida');
+const salidaBtn = document.getElementById('salida');
 const resultadoDiv = document.getElementById('resultado');
-
-buscarBtn.addEventListener('click', () => {
-    const nombreBuscado = nombreProductoInput.value;
-    if (filtrarPorNombre() !== '') {
-        const prodsFiltrados = filtrarPorNombre(nombreBuscado);
-        if (prodsFiltrados.length === 0) {
-            resultadoDiv.innerHTML = "No se encontraron productos con ese nombre ❌";
-        } else {
-            let tableHtml = '<table><tr><th>Nombre</th><th>Precio</th></tr>';
-            prodsFiltrados.forEach((producto) => {
-                tableHtml += `<tr><td>${producto.nombre}</td><td>${producto.precio}</td></tr>`;
-            });
-            tableHtml += '</table>';
-            resultadoDiv.innerHTML = tableHtml;
-        }
-    }
-});
-
-salirBtn.addEventListener('click', () => {
-    resultadoDiv.innerHTML = '';
-    nombreProductoInput.value = '';
-});
 
 //incorporamos cards de Bootstrap
 let carro = JSON.parse(localStorage.getItem('carro')) || [];
@@ -61,7 +9,24 @@ let carro = JSON.parse(localStorage.getItem('carro')) || [];
 let tablaBody = document.getElementById("tablaBody");
 let botones = document.getElementsByClassName("compra");
 
-function renderizarProductos(listaCuadros, listaEspejos, listaTapices, listaAlmoha){
+// Función para renderizar las cards de productos en un contenedor
+function renderizarProductos(productos, contenedor) {
+    const contenedorElement = document.getElementById(contenedor);
+    contenedorElement.innerHTML = ''; // Limpiar el contenido del contenedor
+    
+    productos.forEach((producto) => {
+        contenedorElement.innerHTML += `
+            <div class="card col-sm-2 cards">
+                <img src="${producto.foto}">
+                <div class="card-body">
+                    <h5 class="card-title">${producto.nombre}</h5>
+                    <p class="card-text">Precio $ ${producto.precio}</p>
+                    <button id="${producto.id}" class="btn btn-primary compra">Comprar</button>
+                </div>
+            </div>
+        `;
+    });
+}
 
 //lista de cuadros
 let contenedorCuadro = document.getElementById("listaCuadros");
@@ -148,9 +113,6 @@ for (const boton of botones) {
         }
     });
 }
-}
-
-renderizarProductos(cuadros, espejos, tapices, almohadones);
 
 //push al carrito de todas las listas
 function agregarACarrito(producto){
@@ -258,3 +220,152 @@ document.getElementById('tablaBody').innerHTML = ''
 document.getElementById('total').innerText = 'Total a pagar $: ';
 localStorage.removeItem('carro');
 }
+
+//evento para el boton Buscar
+buscarBtn.addEventListener('click', () => {
+    const categoriaSeleccionada = categoriaSelect.value;
+
+    try {
+        const prodsFiltrados = filtrarPorNombre(categoriaSeleccionada);
+        if (prodsFiltrados.length === 0) {
+            resultadoDiv.innerHTML = "No se encontraron productos con ese nombre ❌";
+        } else {
+            // Limpiar las secciones de productos
+            document.getElementById("listaCuadros").innerHTML = "";
+            document.getElementById("listaEspejos").innerHTML = "";
+            document.getElementById("listaTapices").innerHTML = "";
+            document.getElementById("listaAlmoha").innerHTML = "";
+
+            // Renderizar productos filtrados en la sección correspondiente
+            renderizarProductos(
+                categoriaSeleccionada === "cuadros" ? prodsFiltrados : [],
+                "listaCuadros"
+            );
+            renderizarProductos(
+                categoriaSeleccionada === "espejos" ? prodsFiltrados : [],
+                "listaEspejos"
+            );
+            renderizarProductos(
+                categoriaSeleccionada === "tapices" ? prodsFiltrados : [],
+                "listaTapices"
+            );
+            renderizarProductos(
+                categoriaSeleccionada === "almohadones" ? prodsFiltrados : [],
+                "listaAlmoha"
+            );
+
+            resultadoDiv.innerHTML = ""; // Limpiar el resultado anterior si lo hubiera
+        }
+    } catch (error) {
+        resultadoDiv.innerHTML = error.message;
+    }
+});
+
+function filtrarPorNombre(categoria) {
+    let productos;
+                
+    switch (categoria) {
+        case 'cuadros':
+            productos = cuadros;
+            break;
+        case 'almohadones':
+            productos = almohadones;
+            break;
+        case 'espejos':
+            productos = espejos;
+            break;
+        case 'tapices':
+            productos = tapices;
+            break;
+        default:
+            throw new Error('No encontramos tu producto ❌');
+    }
+
+    return productos || []; // Devuelve el arreglo de productos o un arreglo vacío si no hay coincidencia
+}
+
+function renderizarProductos(productos, contenedor) {
+    const contenedorElement = document.getElementById(contenedor);
+    contenedorElement.innerHTML = ''; // Limpiar el contenido del contenedor
+
+    productos.forEach((producto) => {
+        const cardDiv = document.createElement('div');
+        cardDiv.className = 'card col-sm-2 cards';
+
+        const imgElement = document.createElement('img');
+        imgElement.src = producto.foto;
+
+        const cardBodyDiv = document.createElement('div');
+        cardBodyDiv.className = 'card-body';
+
+        const titleElement = document.createElement('h5');
+        titleElement.className = 'card-title';
+        titleElement.textContent = producto.nombre;
+
+        const priceElement = document.createElement('p');
+        priceElement.className = 'card-text';
+        priceElement.textContent = `Precio $ ${producto.precio}`;
+
+        const buyButton = document.createElement('button');
+        buyButton.id = producto.id;
+        buyButton.className = 'btn btn-primary compra';
+        buyButton.textContent = 'Comprar';
+
+        cardBodyDiv.appendChild(titleElement);
+        cardBodyDiv.appendChild(priceElement);
+        cardBodyDiv.appendChild(buyButton);
+
+        cardDiv.appendChild(imgElement);
+        cardDiv.appendChild(cardBodyDiv);
+
+        contenedorElement.appendChild(cardDiv);
+    });
+}
+
+//evento para el boton Limpiar
+salidaBtn.addEventListener('click', () => {
+    // Restablecer la página 2 a su estado original
+    categoriaSelect.value = ''; // Reiniciamos el valor del select
+    resultadoDiv.innerHTML = ''; // Borramos los resultados de búsqueda
+
+ // Limpiar las secciones de productos
+ document.getElementById("listaCuadros").innerHTML = "";
+ document.getElementById("listaEspejos").innerHTML = "";
+ document.getElementById("listaTapices").innerHTML = "";
+ document.getElementById("listaAlmoha").innerHTML = "";
+
+ // Volver a renderizar todos los productos originales
+ renderizarProductos(cuadros, "listaCuadros");
+ renderizarProductos(espejos, "listaEspejos");
+ renderizarProductos(tapices, "listaTapices");
+ renderizarProductos(almohadones, "listaAlmoha");
+
+});
+
+// //json local
+// let inspirateMiMusa = document.getElementById("inspirate-mi-musa");
+// function obtenerJsonPropio(){
+//     const URLJSON = "/user.json";
+//     fetch(URLJSON)
+//     .then(resp => resp.json())
+//     .then(data => {console.log(data.inspirateConMiMusa);
+//     });
+
+//     //cargamos las cards de las imagenes solicitadas
+//     for(const prod of inspirateMiMusa){
+//         inspirateMiMusa.innerhtml+=`
+//             <tr>
+//                 <td>$prod.nombre</td>
+//                 <td>$prod.categoria</td>
+//                 <td>$prod.descripcion</td>
+//                 <td>$prod.imagen</td>
+//             </tr>
+//         `;
+//     };
+
+//     //inyeccion al DOM
+
+
+// }
+
+// obtenerJsonPropio();
