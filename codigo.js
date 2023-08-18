@@ -227,35 +227,31 @@ buscarBtn.addEventListener('click', () => {
 
     try {
         const prodsFiltrados = filtrarPorNombre(categoriaSeleccionada);
-        if (prodsFiltrados.length === 0) {
-            resultadoDiv.innerHTML = "No se encontraron productos con ese nombre ❌";
-        } else {
-            // Limpiar las secciones de productos
-            document.getElementById("listaCuadros").innerHTML = "";
-            document.getElementById("listaEspejos").innerHTML = "";
-            document.getElementById("listaTapices").innerHTML = "";
-            document.getElementById("listaAlmoha").innerHTML = "";
+        // Limpiar las secciones de productos
+        document.getElementById("listaCuadros").innerHTML = "";
+        document.getElementById("listaEspejos").innerHTML = "";
+        document.getElementById("listaTapices").innerHTML = "";
+        document.getElementById("listaAlmoha").innerHTML = "";
 
-            // Renderizar productos filtrados en la sección correspondiente
-            renderizarProductos(
-                categoriaSeleccionada === "cuadros" ? prodsFiltrados : [],
-                "listaCuadros"
-            );
-            renderizarProductos(
-                categoriaSeleccionada === "espejos" ? prodsFiltrados : [],
-                "listaEspejos"
-            );
-            renderizarProductos(
-                categoriaSeleccionada === "tapices" ? prodsFiltrados : [],
-                "listaTapices"
-            );
-            renderizarProductos(
-                categoriaSeleccionada === "almohadones" ? prodsFiltrados : [],
-                "listaAlmoha"
-            );
+        // Renderizar productos filtrados en la sección correspondiente
+        renderizarProductos(
+            categoriaSeleccionada === "cuadros" ? prodsFiltrados : [],
+            "listaCuadros"
+        );
+        renderizarProductos(
+            categoriaSeleccionada === "espejos" ? prodsFiltrados : [],
+            "listaEspejos"
+        );
+        renderizarProductos(
+            categoriaSeleccionada === "tapices" ? prodsFiltrados : [],
+            "listaTapices"
+        );
+        renderizarProductos(
+            categoriaSeleccionada === "almohadones" ? prodsFiltrados : [],
+            "listaAlmoha"
+        );
 
-            resultadoDiv.innerHTML = ""; // Limpiar el resultado anterior si lo hubiera
-        }
+        resultadoDiv.innerHTML = ""; //Limpiamos el resultado anterior si lo hubiera
     } catch (error) {
         resultadoDiv.innerHTML = error.message;
     }
@@ -278,7 +274,20 @@ function filtrarPorNombre(categoria) {
             productos = tapices;
             break;
         default:
-            throw new Error('No encontramos tu producto ❌');
+            Toastify({
+                text: "No encontramos tu producto ❌",
+                duration: 3000,
+                gravity: 'top',
+                position: 'right',
+                close: true,
+                style: {
+                    background: "#737375",
+                },
+                offset: {
+                    x: 150,
+                    y: 110, 
+                },
+            }).showToast();
     }
 
     return productos || []; // Devuelve el arreglo de productos o un arreglo vacío si no hay coincidencia
