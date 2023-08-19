@@ -15,6 +15,11 @@
     margin-left: 380px;
 }
 
+.navbar-collapse {
+    right: auto;
+    left: 0;
+}
+
 .logo {
     display: block;
     margin: auto;
@@ -80,4 +85,25 @@ h2{
 
 .cards{
     margin: 10px;
+}
+
+.footer{
+    background-color: #ffffff;
+    color: #737375;
+    display: flex;
+    justify-content: space-around;
+}
+
+.contenedor6{
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.contenedor7{
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.footerp{
+    margin-bottom: 5px;
 }
