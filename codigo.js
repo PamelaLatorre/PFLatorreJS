@@ -125,7 +125,7 @@ function agregarACarrito(producto){
         title: 'Fantástico!',
         text: `Agregaste ${producto.nombre} al carrito`,
         imageUrl: producto.foto,
-        imageWidth: 130,
+        imageWidth: 130, 
         imageHeight: 130,
         imageAlt: producto.nombre,
     })
@@ -355,7 +355,7 @@ salidaBtn.addEventListener('click', () => {
 let inspirateMiMusa = document.getElementById("inspirate-mi-musa");
 
 function obtenerJsonPropio(){
-    const URLJSON = "/users.json";
+    const URLJSON = "/PFLatorreJS/assets/users.json";
     fetch(URLJSON)
     .then(resp => resp.json())
     .then((data) => {
@@ -370,7 +370,7 @@ function obtenerJsonPropio(){
                     <img src= "${prod.imagen}">
                     <div class="card-body">
                         <h5 class="card-title">${prod.nombre}</h5>
-                        <h6 class="card-title">${prod.categoria}</h6>
+                        <h6 class="card-title">${prod.categoria}</h6> 
                         <p class="card-text">Detalle: ${prod.descripcion}</p>
                     </div>
                 </div>
