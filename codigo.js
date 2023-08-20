@@ -355,7 +355,7 @@ salidaBtn.addEventListener('click', () => {
 let inspirateMiMusa = document.getElementById("inspirate-mi-musa");
 
 function obtenerJsonPropio(){
-    const URLJSON = "/PFLatorreJS/users.json";
+    const URLJSON = "https://raw.githubusercontent.com/PamelaLatorre/PFLatorreJS/main/users.json";
     fetch(URLJSON)
     .then(resp => resp.json())
     .then((data) => {
