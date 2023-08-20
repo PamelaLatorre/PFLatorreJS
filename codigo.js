@@ -370,8 +370,8 @@ function obtenerJsonPropio(){
                     <img src= "${prod.imagen}">
                     <div class="card-body">
                         <h5 class="card-title">${prod.nombre}</h5>
-                        <h6 class="card-title">${prod.categoria}</h6> 
-                        <p class="card-text">Detalle: ${prod.descripcion}</p>
+                        <h6 class="card-title">Categoria: ${prod.categoria}</h6> 
+                        <p class="card-text">${prod.descripcion}</p>
                     </div>
                 </div>
             `;
