@@ -358,7 +358,7 @@ function obtenerJsonPropio(){
     const URLJSON = "/users.json";
     fetch(URLJSON)
     .then(resp => resp.json())
-    .then(data => {
+    .then((data) => {
         console.log(data.inspirateConMiMusa);
         const listaInspi = data.inspirateConMiMusa;
         console.log(listaInspi);
@@ -377,6 +377,9 @@ function obtenerJsonPropio(){
             `;
         }
     })
+    .catch(error => {
+        console.error("Error al obtener o procesar el JSON:", error);
+    });
 }
 
 obtenerJsonPropio();
