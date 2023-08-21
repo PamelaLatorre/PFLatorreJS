@@ -77,6 +77,14 @@ h2{
 .salida{
     margin-left: 20px;
 }
+
+.iniciop{
+    text-align: center;
+    font-size: 120%;
+    color: #737375;
+    margin-bottom: 35px;
+}
+
 .row {
     display: flex;
     justify-content: center;
