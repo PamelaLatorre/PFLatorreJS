@@ -85,10 +85,18 @@ h2{
 
 .cards{
     margin: 10px;
+    padding: 0%;
 }
 
 .inspirate{
     margin-top: 55px;
+}
+
+.inspiratep{
+    text-align: center;
+    font-size: 120%;
+    color: #737375;
+    margin-bottom: 25px;
 }
 
 .footer{

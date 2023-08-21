@@ -9,6 +9,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/luxon@3.0.4/build/global/luxon.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <link rel="stylesheet" href="./css/style.css">
 </head>
@@ -35,7 +37,16 @@
         </div>        
     </nav>
 
-    
+    <script>
+    //bienvenida
+    //luxon
+        const DateTime = luxon.DateTime;
+        const inicio = DateTime.now();
+        console.log(inicio.toLocaleString());
+        console.log(inicio.weekdayLong);
+        Swal.fire(`Hola, bienvenida a MiMusa! Hoy es ${inicio.weekdayLong} de compras🎉`);
+    </script>
+
     <img class="logo" src="assets/img/logo-png.png"logo" height="130" width="150">
 
     <h1 class="h1">Un poco de mi..</h1>
