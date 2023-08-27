@@ -4,16 +4,18 @@
 
 Este proyecto fue presentado como Instancia Final del <em> Curso de JavaScript. </em>
 
-Basado en un emprendimiento, destinado a la venta de objetos de decoración personalizados y muy hermosos. Que se denomina <b> MiMusa </b>.
+Referido a <b> MiMusa </b>, un emprendimiento de mi localidad, destinado a la venta de objetos de decoración personalizados y muy hermosos.
 
-El mismo es un e-commerce básico (HTML, CSS y JavaScript) que permite a los usuarios ver productos y agregarlos al carrito de compras.
+El proyecto corresponde a un e-commerce, donde se ha agregado Javascript para manejar la interacción y dinamismo, generando una interfaz coherente y atractiva.
 
-Entre las características, se destacan:
+Entre las características, se destacan: <br>
 • Lista de productos con imágenes, nombres, descripciones y precios. <br>
 • Funcionalidad de búsqueda para encontrar productos específicos.<br>
-• Agregar productos al carrito de compras haciendo clic en "Agregar al Carrito".<br>
-• Ver los productos seleccionados y el total en el carrito de compras.
+• Funcionalidad de agregar productos al carrito de compras haciendo clic en "Agregar al Carrito".<br>
+• Vista de los productos seleccionados y el total en el carrito de compras, pudiéndose eliminar cualquiera de los items.<br>
+• Carga de datos desde un JSON local, utilizando fetch.<br>
 
-En cuanto a la navegación se ha organizado de modo sencillo e intuitivo, facilitando la experiencia del usuario. A cada sección se accede a traves de la Barra de navegación.
+
+En cuanto a la navegación se ha organizado de modo sencillo e intuitivo, facilitando la experiencia del usuario. A cada una de las páginas se accede a través de la Barra de navegación.
 
 Creado con ❤ por Pamela Latorre.
